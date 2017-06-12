@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" Program: Install software for Manjaro Linux
+""" Program: Install software for Linux Mint
     Programmer: Chevelle
-    Date created: 06-03-2017
+    Date created: 06-12-2017
     Date Updated:
-    Tested: Manjaro Linux 17.0.1 = worked
-    Purpose: Fast way to install/configure new installed Manjaro distro
+    Tested: Linux Mint 18.1 = worked
+    Purpose: Fast way to install/configure new installed Mint distro
     Description: Install software, configure wine on games side
 """
 
