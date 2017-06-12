@@ -92,7 +92,8 @@ class List(object):
 
     def Software():
         List.install(f'{deb_install} ubuntu-restricted-extras libdvd-pkg catfish \
-                    p7zip-rar vlc clemintine inkscape shotwell shutter scribus')
+                    p7zip-rar vlc clemintine inkscape shotwell shutter \
+                    scribus', 'Software')
 
     Menu_list = {0: Exit,
                  1: Development,
