@@ -75,8 +75,8 @@ class List(object):
                            '[y=full/N=apps]: '))
         if choice in ('y', 'ye', 'yes'):
             List.install(f'{deb_install} dosbox wine winetricks q4wine \
-                        playonlinux mono smplayer gimp lib32-libldap \
-                        lib32-gnutls lib32-lcms2 ttf-ms-fonts gstreamer0.10-bad \
+                        playonlinux smplayer gimp \
+                        ttf-mscorefonts-installer gstreamer0.10-bad \
                         gstreamer0.10-bad-plugins gstreamer0.10-good \
                         gstreamer0.10-good-plugins gstreamer0.10-ugly \
                         gstreamer0.10-ugly-plugins gstreamer0.10-base \
@@ -85,14 +85,14 @@ class List(object):
             os.system('winetricks corefonts hosts winhttp wininet vcrun2015')
         else:
             List.install(f'{deb_install} dosbox wine winetricks q4wine \
-                        playonlinux mono smplayer gimp lib32-libldap \
-                        lib32-gnutls lib32-lcms2 ttf-ms-fonts', 'Game')
+                        playonlinux smplayer gimp \
+                        ttf-mscorefonts-installer', 'Game')
 
         menu()
 
     def Software():
         List.install(f'{deb_install} ubuntu-restricted-extras libdvd-pkg catfish \
-                    p7zip-rar vlc clemintine inkscape shotwell shutter \
+                    p7zip-rar vlc clementine inkscape shotwell shutter \
                     scribus', 'Software')
 
     Menu_list = {0: Exit,
