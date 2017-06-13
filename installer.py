@@ -38,35 +38,25 @@ class List(object):
         choice = str(input('Would you like to install "Google Chrome" [y/N]: '))
         if choice in ('y', 'ye', 'yes'):
             wb.open_new_tab('https://www.google.com/chrome/browser/desktop/index.html')
+            print('Opening your Browser Up...')
             input('Press Enter to continue:')
 
         choice2 = str(input('Would you like to install "Teamviewer" [y/N]: '))
         if choice2 in ('y', 'ye', 'yes'):
             wb.open_new_tab('https://www.teamviewer.com/en/download/linux/')
+            print('Opening your Browser Up...')
             input('Press Enter to continue:')
 
         input('Press Enter to continue installing Internet Software:')
         List.install(f'{deb_install} skype', 'Internet')
 
     def Tweaks():
-        """Virtual memory tweaks for desktop..."""
-        tweakList = {5: 'vm.dirty_background_ratio',
-                     10: 'vm.swappiness',
-                     15: 'vm.dirty_ratio',
-                     70: 'vm.vfs_cache_pressure'
-                     }
-
-        for k, v, in tweakList.items():
-            os.system(f'sudo echo -n "{v} = {k}" >> /etc/sysctl.conf')
-            print(f'{v} = {k}.....Was changed...')
-
-        os.sytem('sudo sed -i ''s/false/true/g'' /etc/apt/apt.conf.d/00recommends')
 
         choice = str(input('Do you want to install Tweak software'
                            '[y=full/N=apps]: '))
         if choice in ('y', 'ye', 'yes'):
             List.install(f'{deb_install} conky conky-manager dconf-editor \
-                        doublecmd-gkt', 'Teak-Software')
+                        doublecmd-gkt', 'Teak')
 
         menu()
 
@@ -75,12 +65,7 @@ class List(object):
                            '[y=full/N=apps]: '))
         if choice in ('y', 'ye', 'yes'):
             List.install(f'{deb_install} dosbox wine winetricks q4wine \
-                        playonlinux smplayer gimp \
-                        ttf-mscorefonts-installer gstreamer0.10-bad \
-                        gstreamer0.10-bad-plugins gstreamer0.10-good \
-                        gstreamer0.10-good-plugins gstreamer0.10-ugly \
-                        gstreamer0.10-ugly-plugins gstreamer0.10-base \
-                        gstreamer0.10-base-plugins \
+                        playonlinux smplayer gimp ttf-mscorefonts-installer \
                         ', 'Game-full')
             os.system('winetricks corefonts hosts winhttp wininet vcrun2015')
         else:
