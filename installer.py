@@ -56,7 +56,7 @@ class List(object):
                            '[y=full/N=apps]: '))
         if choice in ('y', 'ye', 'yes'):
             List.install(f'{deb_install} conky conky-manager dconf-editor \
-                        doublecmd-gkt', 'Teak')
+                        doublecmd-gkt', 'Tweak')
 
         menu()
 
