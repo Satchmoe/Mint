@@ -5,7 +5,9 @@
 #
 #		Programmer: Chevelle
 #		Date created: 9-11-2020
-#		Date Updated: 
+#		Date Updated: 9-13-2020
+*
+*		Update Notes: Added qdirstat, acetoneiso,
 #
 #		Tested: With linux-mint 20 = Worked
 #
@@ -36,7 +38,8 @@ while :
 do
 
 	title_name "Linux-Mint Setup:"
-
+	echo "Dont forget your VPN"
+	echo
 	echo "1 = Swappiness..."
 	echo "2 = Secure..."
 	echo "3 = Needed Software..."
@@ -106,7 +109,7 @@ do
 
 				title_name "Install needed Software"
 				sudo apt update
-				sudo apt install tlp fail2ban clamtk basket geany terminator git mpv
+				sudo apt install tlp fail2ban clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine
 				echo
 				echo "Hit Enter to continue"
 				read c
@@ -139,7 +142,7 @@ do
 				echo
 				echo "Hit Enter to continue"
 				read c
-				
+
 
 				;;
 
