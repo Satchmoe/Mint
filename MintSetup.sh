@@ -6,8 +6,8 @@
 #		Programmer: Chevelle
 #		Date created: 9-11-2020
 #		Date Updated: 9-13-2020
-*
-*		Update Notes: Added qdirstat, acetoneiso,
+#
+#		Update Notes: Added qdirstat, acetoneiso,
 #
 #		Tested: With linux-mint 20 = Worked
 #
