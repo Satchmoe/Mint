@@ -40,7 +40,7 @@ do
 	title_name "Linux-Mint Setup:"
 	echo "Dont forget your VPN"
 	echo
-	echo "1 = Swappiness..."
+	echo "1 = Brave Browser..."
 	echo "2 = Secure..."
 	echo "3 = Needed Software..."
 	echo "4 = Conky..."
@@ -55,14 +55,17 @@ do
 		case $b in
 
 			1)
-				##### Swappiness #####
-
-				title_name "Swappiness"
-				echo "vm.swappiness = 10" >> /etc/sysctl.conf
-				echo "vm.dirty_ratio = 3" >> /etc/sysctl.conf
-				echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.conf
-				echo "vm.dirty_background_ratio = 5" >> /etc/sysctl.conf
-				echo "vm.watermark_scale_factor = 200" >> /etc/sysctl.conf
+				##### Brave-Browser #####
+				
+				title name "Brave-Browser"
+				sudo apt install apt-transport-https curl gnupg
+				echo
+				curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+				echo
+				echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+				echo
+				sudo apt update
+				sudo apt install brave-browser
 				echo
 				echo "Hit Enter to continue"
 				read c
