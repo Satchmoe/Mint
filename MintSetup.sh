@@ -5,13 +5,13 @@
 #
 #		Programmer: Chevelle
 #		Date created: 9-11-2020
-#		Date Updated: 9-13-2020
+#		Date Updated: 2-15-2021
 #
-#		Update Notes: Added qdirstat, acetoneiso,
+#		Update Notes: Added Battery Optimizer
 #
-#		Tested: With linux-mint 20 = Worked
+#		Tested: With linux-mint 20.1 = Worked
 #
-#		Note: Run in sudo to get swappiness to work
+#		Note: 
 #
 #		Purpose: Faster way to install/configure new linux-mint
 #
@@ -45,11 +45,11 @@ do
 	echo "3 = Needed Software..."
 	echo "4 = Conky..."
 	echo "5 = Zsh..."
-	#echo "6 = Atom Editor 64 bit only..."
+	echo "6 = Laptop Battery Optimizer..."
 	#echo "7 = I3wm..."
 	#echo "8 = Subllime Editor 64 or 32 bit..."
 	#echo "8 = Remove unwanted software..."
-	echo "6 = EXIT..."
+	echo "7 = EXIT..."
 	read b
 
 		case $b in
@@ -75,6 +75,9 @@ do
 				##### Secure #####
 
 				title_name "Secure"
+				sudo apt update
+				sudo apt install fail2ban ufw gufw
+				echo
 				# --- Setup UFW rules
 				sudo ufw limit 22/tcp
 				sudo ufw allow 80/tcp
@@ -112,7 +115,7 @@ do
 
 				title_name "Install needed Software"
 				sudo apt update
-				sudo apt install tlp fail2ban clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine
+				sudo apt install clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine notepadqq
 				echo
 				echo "Hit Enter to continue"
 				read c
@@ -150,6 +153,28 @@ do
 				;;
 
 			6)
+				##### Battery Optimizer #####
+
+				title_name "Install Laptop Battery Optimizer "
+				sudo apt update
+				sudo apt install tlp python3-gi git python3-setuptools python3-stdeb dh-python
+				#-- install TLPUI
+				git clone https://github.com/d4nj1/TLPUI
+				cd TLPUI
+				python3 setup.py --command-packages=stdeb.command bdist_deb
+				sudo dpkg -i deb_dist/python3-tlpui_*all.deb
+				echo
+				#-- install auto-cpufreq
+				cd ..
+				git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+				cd auto-cpufreq && sudo ./auto-cpufreq-installer
+				sudo auto-cpufreq --install
+				echo "Hit Enter to continue"
+				read c
+
+				;;
+			
+			7)
 				#### Exit ####
 
 				title_name "Good Bye!!!"
