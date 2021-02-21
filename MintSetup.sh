@@ -171,6 +171,7 @@ do
 				sudo auto-cpufreq --install
 				echo
 				echo "Dont forget to add TLPUI to the menu and check auto-cpufreq --stats"
+				echo
 				echo "Hit Enter to continue"
 				read c
 
@@ -184,6 +185,7 @@ do
 				pip3 install bpytop --upgrade
 				echo
 				echo "Run Bpytop in terminal or add to menu"
+				echo
 				echo "Hit Enter to continue"
 				read c
 
