@@ -11,7 +11,7 @@
 #
 #		Tested: With linux-mint 20.1 = Worked
 #
-#		Note: 
+#		Note:
 #
 #		Purpose: Faster way to install/configure new linux-mint
 #
@@ -46,17 +46,17 @@ do
 	echo "4 = Conky..."
 	echo "5 = Zsh..."
 	echo "6 = Laptop Battery Optimizer..."
-	#echo "7 = I3wm..."
+	echo "7 = Bpytop..."
 	#echo "8 = Subllime Editor 64 or 32 bit..."
 	#echo "8 = Remove unwanted software..."
-	echo "7 = EXIT..."
+	echo "8 = EXIT..."
 	read b
 
 		case $b in
 
 			1)
 				##### Brave-Browser #####
-				
+
 				title name "Brave-Browser"
 				sudo apt install apt-transport-https curl gnupg
 				echo
@@ -169,12 +169,28 @@ do
 				git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 				cd auto-cpufreq && sudo ./auto-cpufreq-installer
 				sudo auto-cpufreq --install
+				echo
+				echo "Dont forget to add TLPUI to the menu and check auto-cpufreq --stats"
 				echo "Hit Enter to continue"
 				read c
 
 				;;
-			
+
 			7)
+				##### Bpytop #####
+
+				title_name "Install zsh"
+				sudo apt install python3 python3-pip
+				pip3 install bpytop --upgrade
+				echo
+				echo "Run Bpytop in terminal or add to menu"
+				echo "Hit Enter to continue"
+				read c
+
+
+				;;
+
+			8)
 				#### Exit ####
 
 				title_name "Good Bye!!!"
