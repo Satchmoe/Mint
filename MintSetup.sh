@@ -5,7 +5,7 @@
 #
 #		Programmer: Chevelle
 #		Date created: 9-11-2020
-#		Date Updated: 2-15-2021
+#		Date Updated: 2-27-2021
 #
 #		Update Notes: Added Battery Optimizer
 #
@@ -47,9 +47,9 @@ do
 	echo "5 = Zsh..."
 	echo "6 = Laptop Battery Optimizer..."
 	echo "7 = Bpytop..."
-	#echo "8 = Subllime Editor 64 or 32 bit..."
-	#echo "8 = Remove unwanted software..."
-	echo "8 = EXIT..."
+	echo "8 = Wine..."
+	echo "9 = Clean up..."
+	echo "10 = EXIT..."
 	read b
 
 		case $b in
@@ -115,13 +115,12 @@ do
 
 				title_name "Install needed Software"
 				sudo apt update
-				sudo apt install clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine notepadqq
+				sudo apt install clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine notepadqq ttf-mscorefonts-installer p7zip-full p7zip-rar
 				echo
 				echo "Hit Enter to continue"
 				read c
 
 				;;
-
 			4)
 				##### Conky #####
 
@@ -134,7 +133,6 @@ do
 				read c
 
 				;;
-
 			5)
 				##### zsh #####
 
@@ -149,23 +147,16 @@ do
 				echo "Hit Enter to continue"
 				read c
 
-
 				;;
-
 			6)
 				##### Battery Optimizer #####
 
 				title_name "Install Laptop Battery Optimizer "
+				sudo add-apt-repository -y ppa:linuxuprising/apps
 				sudo apt update
-				sudo apt install tlp python3-gi git python3-setuptools python3-stdeb dh-python
 				#-- install TLPUI
-				git clone https://github.com/d4nj1/TLPUI
-				cd TLPUI
-				python3 setup.py --command-packages=stdeb.command bdist_deb
-				sudo dpkg -i deb_dist/python3-tlpui_*all.deb
-				echo
+				sudo apt install tlp tlpui python3-gi git python3-setuptools python3-stdeb dh-python
 				#-- install auto-cpufreq
-				cd ..
 				git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 				cd auto-cpufreq && sudo ./auto-cpufreq-installer
 				sudo auto-cpufreq --install
@@ -176,7 +167,6 @@ do
 				read c
 
 				;;
-
 			7)
 				##### Bpytop #####
 
@@ -189,10 +179,41 @@ do
 				echo "Hit Enter to continue"
 				read c
 
+				;;
+			8)
+				##### Wine #####
+
+				title_name "Wine"
+				# enable 32 bit architure
+				sudo dpkg --add-architecture i386
+				# Download and add the repoitory key
+				wget -nc https://dl.winehq.org/wine-builds/winehq.key
+				sudo apt-key add winehq.key
+				sudo apt update
+				# Install Stable branch
+				sudo apt install --install-recommends winehq-stable
+				sudo apt install dosbox
+				echo
+				echo "Hit Enter to continue"
+				read c
 
 				;;
+			9)
+				##### Clean Up #####
 
-			8)
+				title_name "Clean Up"
+				# removes packages that failed to install
+				sudo apt autoclean
+				# removes apt-cache
+				sudo apt clean
+				# removes unwanted software dependencies
+				sudo apt autoremove
+				echo
+				echo "Hit Enter to continue"
+				read c
+
+				;;
+			10)
 				#### Exit ####
 
 				title_name "Good Bye!!!"
