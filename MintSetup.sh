@@ -155,13 +155,14 @@ do
 				sudo add-apt-repository -y ppa:linuxuprising/apps
 				sudo apt update
 				#-- install TLPUI
-				sudo apt install tlp tlpui python3-gi git python3-setuptools python3-stdeb dh-python
+				sudo apt install tlp tlpui python3-gi git python3-setuptools python3-stdeb dh-python stress
 				#-- install auto-cpufreq
 				git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 				cd auto-cpufreq && sudo ./auto-cpufreq-installer
 				sudo auto-cpufreq --install
 				echo
 				echo "Dont forget to add TLPUI to the menu and check auto-cpufreq --stats"
+				echo "Dont forget to do a stress test. exp(stress --cpu 8)"
 				echo
 				echo "Hit Enter to continue"
 				read c
@@ -186,6 +187,8 @@ do
 				title_name "Wine"
 				# enable 32 bit architure
 				sudo dpkg --add-architecture i386
+				# Add Repository
+				sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 				# Download and add the repoitory key
 				wget -nc https://dl.winehq.org/wine-builds/winehq.key
 				sudo apt-key add winehq.key
