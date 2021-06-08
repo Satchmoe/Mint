@@ -48,8 +48,9 @@ do
 	echo "6 = Laptop Battery Optimizer..."
 	echo "7 = Bpytop..."
 	echo "8 = Wine..."
-	echo "9 = Clean up..."
-	echo "10 = EXIT..."
+	echo "9 = Albert launcher..."
+	echo "10 = Clean up..."
+	echo "11 = EXIT..."
 	read b
 
 		case $b in
@@ -115,7 +116,7 @@ do
 
 				title_name "Install needed Software"
 				sudo apt update
-				sudo apt install clamtk basket geany terminator git mpv acetoneiso qdirstat bleachbit clementine notepadqq ttf-mscorefonts-installer p7zip-full p7zip-rar
+				sudo apt install clamtk basket geany terminator git acetoneiso qdirstat bleachbit clementine ttf-mscorefonts-installer p7zip-full p7zip-rar
 				echo
 				echo "Hit Enter to continue"
 				read c
@@ -202,6 +203,23 @@ do
 
 				;;
 			9)
+				##### Albert launcher #####
+
+				title_name "Albert launcher"
+				# Add Repository
+				sudo curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+				echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+				sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
+				# update
+				sudo apt update
+				# install Albert Launcher
+				sudo apt install albert
+				echo
+				echo "Hit Enter to continue"
+				read c
+
+				;;
+			10)
 				##### Clean Up #####
 
 				title_name "Clean Up"
@@ -216,7 +234,7 @@ do
 				read c
 
 				;;
-			10)
+			11)
 				#### Exit ####
 
 				title_name "Good Bye!!!"
